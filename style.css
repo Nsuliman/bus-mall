@@ -38,13 +38,5 @@ section div {
     border-radius: 20px;
   }
 
-  table {
-    border-collapse: collapse;
-  }
-  
-    table, th, td {
-    border: 1px solid black;
-    padding: 3px 10px;
-  }
 
   

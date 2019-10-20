@@ -1,15 +1,19 @@
 'use strict';
 
+var output;
+
+var statstic = [];
+
 function AllProductsCont(name, src) {
     this.name = name;
     this.src = src;
-    this.clickCtr = 0;
-    this.shownCtr = 0;
+    this.clickCounter = 0;
+    this.seenCounter = 0;
     AllProductsCont.all.push(this);
 }
 
-AllProductsCont.roundCtr = 0;
-AllProductsCont.roundLimit = 25;
+AllProductsCont.initialCounter = 0;
+AllProductsCont.maxLimit = 25;
 AllProductsCont.all = [];
 //console.log(' aaaalllllllll ' , AllProductsCont.all);
 
@@ -74,10 +78,10 @@ function renderNewProducts() {
     } while(forbidden.includes(AllProductsCont.rightObject));
     // forbidden.push(AllProductsCont.rightObject);
 
-    AllProductsCont.leftObject.shownCtr++;                                        /// Increment The Counter 
-//console.log('showctr' , shownCtr);   
-AllProductsCont.middleObject.shownCtr++;
-AllProductsCont.rightObject.shownCtr++;
+    AllProductsCont.leftObject.seenCounter++;                                        /// Increment The Counter 
+//console.log('showctr' , seenCounter);   
+AllProductsCont.middleObject.seenCounter++;
+AllProductsCont.rightObject.seenCounter++;
 
 
 var leftProductImageElement = AllProductsCont.leftImage;
@@ -121,11 +125,18 @@ function updateTotals() {
 
     for (var i = 0; i < AllProductsCont.all.length; i++) {
         var newProduct = AllProductsCont.all[i];
-        var row = addElement('tr', tableBody);
-        addElement('td', row, newProduct.name);
-        addElement('td', row, '' + newProduct.clickCtr);
-        addElement('td', row, '' + newProduct.shownCtr);
-       // console.log('showctr' , shownCtr);
+        // var row = addElement('tr', tableBody);
+        // addElement('td', row, newProduct.name);
+        // addElement('td', row, '' + newProduct.clickCounter);
+        // addElement('td', row, '' + newProduct.seenCounter);
+       // console.log('showctr' , seenCounter);
+
+       output = newProduct.name + ' had ' + newProduct.clickCounter + ' votes and was shown ' + newProduct.seenCounter + ' times';
+       console.log('output' , output);
+
+    // statstic.push(output);
+    // console.log('arrraaaay' , statstic);
+
     }
 } // Ending Total Updates product function 
 
@@ -147,29 +158,29 @@ function addElement(tag, container, text) {
 
 function clickHandler(event) {
 
-    var clickedId = event.target.id;
+    var clickItemId = event.target.id;
     var productChlicked;
   
-    if(clickedId === 'left-product-image') {
+    if(clickItemId === 'left-product-image') {
       productChlicked = AllProductsCont.leftObject;
-    } else if (clickedId === 'middle-product-image') {
+    } else if (clickItemId === 'middle-product-image') {
       productChlicked = AllProductsCont.middleObject;
-    } else if (clickedId === 'right-product-image'){
+    } else if (clickItemId === 'right-product-image'){
       productChlicked = AllProductsCont.rightObject;  
 
     }else {
-      console.log('Um, what was clicked on???', clickedId);
+      console.log('oooops , Finished ', clickItemId);
     }
   
     if(productChlicked) {
-      productChlicked.clickCtr++;
-      AllProductsCont.roundCtr++;
+      productChlicked.clickCounter++;
+      AllProductsCont.initialCounter++;
   
       updateTotals();
   
-      if(AllProductsCont.roundCtr === AllProductsCont.roundLimit) {
+      if(AllProductsCont.initialCounter === AllProductsCont.maxLimit) {
   
-        alert('No more clicking for you!');
+        alert('Your Trails Over ');
   
         AllProductsCont.container.removeEventListener('click', clickHandler);
 
@@ -185,3 +196,4 @@ function clickHandler(event) {
     updateTotals();
 
     renderNewProducts();
+
