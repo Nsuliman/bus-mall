@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 function AllProductsCont(name, src) {
     this.name = name;
@@ -11,9 +11,6 @@ function AllProductsCont(name, src) {
 AllProductsCont.roundCtr = 0;
 AllProductsCont.roundLimit = 25;
 AllProductsCont.all = [];
-
-
-
 //console.log(' aaaalllllllll ' , AllProductsCont.all);
 
 
@@ -75,13 +72,10 @@ function renderNewProducts() {
 
         AllProductsCont.rightObject = getRandomProduct();
     } while(forbidden.includes(AllProductsCont.rightObject));
-    forbidden.push(AllProductsCont.rightObject);
+    // forbidden.push(AllProductsCont.rightObject);
 
-}  // Ending render Products function 
-
-
-AllProductsCont.leftObject.shownCtr++;  
-//console.log('showctr' , shownCtr);                                           /// Increment The Counter 
+    AllProductsCont.leftObject.shownCtr++;                                        /// Increment The Counter 
+//console.log('showctr' , shownCtr);   
 AllProductsCont.middleObject.shownCtr++;
 AllProductsCont.rightObject.shownCtr++;
 
@@ -105,6 +99,11 @@ AllProductsCont.leftTitle.textContent = AllProductsCont.leftObject.name;
 AllProductsCont.middleTitle.textContent = AllProductsCont.middleObject.name
 AllProductsCont.rightTitle.textContent = AllProductsCont.rightObject.name;
 
+}  // Ending render Products function 
+
+
+
+
 
 function getRandomProduct() {
     var index = Math.floor(Math.random() * AllProductsCont.all.length);
@@ -126,6 +125,7 @@ function updateTotals() {
         addElement('td', row, newProduct.name);
         addElement('td', row, '' + newProduct.clickCtr);
         addElement('td', row, '' + newProduct.shownCtr);
+       // console.log('showctr' , shownCtr);
     }
 } // Ending Total Updates product function 
 
