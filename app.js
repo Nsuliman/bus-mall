@@ -1,16 +1,36 @@
 'use strict'
 
-function AllProductsCont (name, src) {
+function AllProductsCont(name, src) {
     this.name = name;
     this.src = src;
     this.clickCtr = 0;
     this.shownCtr = 0;
-    Goat.all.push(this);
-  }
+    AllProductsCont.all.push(this);
+}
 
 AllProductsCont.roundCtr = 0;
 AllProductsCont.roundLimit = 25;
-Goat.all = [];
+AllProductsCont.all = [];
+
+AllProductsCont.leftObject = null;
+AllProductsCont.middleObject = null;
+AllProductsCont.rightObject = null;
+
+
+//console.log(' aaaalllllllll ' , AllProductsCont.all);
+
+
+AllProductsCont.container = document.getElementById('products-container');
+
+AllProductsCont.leftImage = document.getElementById('left-product-image');
+AllProductsCont.rightImage = document.getElementById('middle-product-image');
+AllProductsCont.rightImage = document.getElementById('right-product-image');
+
+
+AllProductsCont.leftTitle = document.getElementById('left-product-title');
+AllProductsCont.rightTitle = document.getElementById('middle-product-title');
+AllProductsCont.leftTitle = document.getElementById('right-product-title');
+
 
 
 new AllProductsCont('bag', 'img/bag.jpg');
@@ -34,3 +54,17 @@ new AllProductsCont('usb', 'img/usb.gif');
 new AllProductsCont('water-can', 'img/water-can.jpg');
 new AllProductsCont('wine-glass', 'img/wine-glass.jpg');
 
+
+
+function renderNewProducts() {
+
+
+
+}  // Ending render Products function 
+
+
+function getRandomProduct() {
+    var index = Math.floor(Math.random() * AllProductsCont.all.length);
+    console.log('index', index);
+    return AllProductsCont.all[index];
+}  // Ending random product function 

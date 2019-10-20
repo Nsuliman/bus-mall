@@ -37,3 +37,12 @@ section div {
     padding: 30px;
     border-radius: 20px;
   }
+
+  table {
+    border-collapse: collapse;
+  }
+  
+    table, th, td {
+    border: 1px solid black;
+    padding: 3px 10px;
+  }
