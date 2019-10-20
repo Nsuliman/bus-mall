@@ -1,8 +1,5 @@
 'use strict';
 
-var output;
-
-var statstic = [];
 
 function AllProductsCont(name, src) {
     this.name = name;
@@ -119,27 +116,16 @@ function getRandomProduct() {
 
 function updateTotals() {
 
-    var tableBody = document.getElementById('productsTable');
+    var alloutput = document.getElementById('productsTable');
 
-    tableBody.innerHTML = '';
+    alloutput.innerHTML = '';
 
     for (var i = 0; i < AllProductsCont.all.length; i++) {
         var newProduct = AllProductsCont.all[i];
-        // var row = addElement('tr', tableBody);
-        // addElement('td', row, newProduct.name);
-        // addElement('td', row, '' + newProduct.clickCounter);
-        // addElement('td', row, '' + newProduct.seenCounter);
-       // console.log('showctr' , seenCounter);
-
-       output = newProduct.name + ' had ' + newProduct.clickCounter + ' votes and was shown ' + newProduct.seenCounter + ' times';
-       console.log('output' , output);
-
-    // statstic.push(output);
-    // console.log('arrraaaay' , statstic);
-
+        var output = addElement('output',alloutput);
+        addElement('p',output, newProduct.name + ' had ' + newProduct.clickCounter + ' votes and was shown ' + newProduct.seenCounter + ' times');
     }
 } // Ending Total Updates product function 
-
 
 
 
