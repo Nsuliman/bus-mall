@@ -16,7 +16,22 @@ header {
 }
 
 section div {
-    width: 33.33%;
+    width: 30%;
     float: left;
+    padding: 5px;
+    border: 10px solid navy;
+    height: 400px;
+    text-align: center; 
+    margin-left: 10px; 
+    margin-bottom: 10px;
+}
+
+  div img {
+    width: 70%;
+  }
+
+  main h1 {
+
+    text-align: center;
     padding: 30px;
   }
