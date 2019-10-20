@@ -1,0 +1,16 @@
+
+body {
+
+    background-color: paleturquoise;
+    color: rgb(230, 14, 140);
+    font-family: Georgia;
+}
+
+header {
+
+    text-align: center;
+    border: 3px dashed navy;
+    background-color: orchid;
+    color: navy;
+    border-radius: 10px;
+}
