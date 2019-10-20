@@ -12,9 +12,6 @@ AllProductsCont.roundCtr = 0;
 AllProductsCont.roundLimit = 25;
 AllProductsCont.all = [];
 
-AllProductsCont.leftObject = null;
-AllProductsCont.middleObject = null;
-AllProductsCont.rightObject = null;
 
 
 //console.log(' aaaalllllllll ' , AllProductsCont.all);
@@ -31,7 +28,9 @@ AllProductsCont.leftTitle = document.getElementById('left-product-title');
 AllProductsCont.middleTitle = document.getElementById('middle-product-title');
 AllProductsCont.rightTitle = document.getElementById('right-product-title');
 
-
+AllProductsCont.leftObject = null;
+AllProductsCont.middleObject = null;
+AllProductsCont.rightObject = null;
 
 new AllProductsCont('bag', 'img/bag.jpg');
 new AllProductsCont('banana', 'img/banana.jpg');
@@ -62,16 +61,27 @@ function renderNewProducts() {
 
     do {
 
-        AllProductsCont.leftObject = getRandomGoat();
+        AllProductsCont.leftObject = getRandomProduct();
     
       } while (forbidden.includes(AllProductsCont.leftObject))
+      forbidden.push(AllProductsCont.leftObject);
+      do {
 
+        AllProductsCont.middleObject = getRandomProduct();
 
+    } while(forbidden.includes(AllProductsCont.middleObject));
+    forbidden.push(AllProductsCont.middleObject);
+    do {
+
+        AllProductsCont.rightObject = getRandomProduct();
+    } while(forbidden.includes(AllProductsCont.rightObject));
+    forbidden.push(AllProductsCont.rightObject);
 
 }  // Ending render Products function 
 
 
-AllProductsCont.leftObject.shownCtr++;                                              /// Increment The Counter 
+AllProductsCont.leftObject.shownCtr++;  
+//console.log('showctr' , shownCtr);                                           /// Increment The Counter 
 AllProductsCont.middleObject.shownCtr++;
 AllProductsCont.rightObject.shownCtr++;
 
@@ -92,7 +102,7 @@ rightProductImageElement.setAttribute('alt', AllProductsCont.rightObject.name);
 
 
 AllProductsCont.leftTitle.textContent = AllProductsCont.leftObject.name;
-AllProductsCont.leftTitle.textContent = AllProductsCont.leftObject.name
+AllProductsCont.middleTitle.textContent = AllProductsCont.middleObject.name
 AllProductsCont.rightTitle.textContent = AllProductsCont.rightObject.name;
 
 
@@ -113,7 +123,7 @@ function updateTotals() {
     for (var i = 0; i < AllProductsCont.all.length; i++) {
         var newProduct = AllProductsCont.all[i];
         var row = addElement('tr', tableBody);
-        addElement('td', row, newProduct.title);
+        addElement('td', row, newProduct.name);
         addElement('td', row, '' + newProduct.clickCtr);
         addElement('td', row, '' + newProduct.shownCtr);
     }
@@ -144,7 +154,7 @@ function clickHandler(event) {
       productChlicked = AllProductsCont.leftObject;
     } else if (clickedId === 'middle-product-image') {
       productChlicked = AllProductsCont.middleObject;
-    } if (clickedId === 'right-product-image'){
+    } else if (clickedId === 'right-product-image'){
       productChlicked = AllProductsCont.rightObject;  
 
     }else {
