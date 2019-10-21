@@ -238,19 +238,24 @@ function fullChart()
 
   console.log('Chart : ', Chart);
   var chart = new Chart(ctx, {
-    type: 'line',
+    type: 'bar',
   
     data: {
       labels: makeProductname(),
       datasets: [
         {
-          label: 'My First Dataset',
+          label: 'My First Dataset - Clicked Product Counter ',
           backgroundColor: 'rgb(255, 99, 132)',
           borderColor: 'rgb(255, 99, 132)',
           data: makeProductclick()
-        }
-      ]
-  
+        }, 
+{         label: 'My First Dataset - Seen Product Counter ',
+          backgroundColor: 'rgb(125, 63, 170)',
+          borderColor: ' rgb(125, 63, 170)',
+          data: makeProductseen(), 
+          type: 'line'
+        }            ]
+        
     },
     // Configuration options go here
     options: {}
