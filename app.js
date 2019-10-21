@@ -76,7 +76,6 @@ function renderNewProducts() {
     // forbidden.push(AllProductsCont.rightObject);
 
     AllProductsCont.leftObject.seenCounter++;                                        /// Increment The Counter 
-//console.log('showctr' , seenCounter);   
 AllProductsCont.middleObject.seenCounter++;
 AllProductsCont.rightObject.seenCounter++;
 
