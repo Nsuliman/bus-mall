@@ -240,6 +240,7 @@ function fullChart()
   var chart = new Chart(ctx, {
     type: 'bar',
   
+    
     data: {
       labels: makeProductname(),
       datasets: [
