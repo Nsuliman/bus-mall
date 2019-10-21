@@ -184,7 +184,7 @@ updateTotals();
 
 renderNewProducts();
 
-////////////////////////// Canvas ////////////////////////////////
+////////////////////////// Canvas Chart  ////////////////////////////////
 
 var ctx = document.getElementById('busChart').getContext('2d');
 
@@ -258,7 +258,6 @@ function fullChart()
         
         
     },
-    // Configuration options go here
     options: {}
   });
 
