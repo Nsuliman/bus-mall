@@ -256,6 +256,7 @@ function fullChart()
           type: 'line'
         }            ]
         
+        
     },
     // Configuration options go here
     options: {}
