@@ -71,15 +71,9 @@ function renderNewProducts() {
   forbidden.push(AllProductsCont.middleObject);
   do {
 
-<<<<<<< HEAD
-    AllProductsCont.leftObject.seenCounter++;                                        /// Increment The Counter 
-AllProductsCont.middleObject.seenCounter++;
-AllProductsCont.rightObject.seenCounter++;
-=======
     AllProductsCont.rightObject = getRandomProduct();
   } while (forbidden.includes(AllProductsCont.rightObject));
   // forbidden.push(AllProductsCont.rightObject);
->>>>>>> lab11-busmall
 
   AllProductsCont.leftObject.seenCounter++;                                        /// Increment The Counter 
   //console.log('showctr' , seenCounter);   
@@ -192,7 +186,7 @@ renderNewProducts();
 
 ////////////////////////// Canvas ////////////////////////////////
 
-var ctx = document.getElementById('ClickChart').getContext('2d');
+var ctx = document.getElementById('busChart').getContext('2d');
 
 
 var productsNames = [];
