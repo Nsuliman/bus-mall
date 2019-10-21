@@ -186,7 +186,7 @@ renderNewProducts();
 
 ////////////////////////// Canvas ////////////////////////////////
 
-var ctx = document.getElementById('busChart').getContext('2d');
+var ctx = document.getElementById('ClickChart').getContext('2d');
 
 
 var productsNames = [];
@@ -229,7 +229,7 @@ function makeProductclick() {
   }
 
   return productsClicks;
-  
+
 }/// Ending product click function 
 
 
