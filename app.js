@@ -250,7 +250,7 @@ function fullChart()
           borderColor: 'rgb(255, 99, 132)',
           data: makeProductclick()
         }, 
-{         label: 'My First Dataset - Seen Product Counter ',
+{         label: 'My Second Dataset - Seen Product Counter ',
           backgroundColor: 'rgb(125, 63, 170)',
           borderColor: ' rgb(125, 63, 170)',
           data: makeProductseen(), 
