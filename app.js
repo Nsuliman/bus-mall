@@ -295,6 +295,7 @@ function getProducts() {
     for (let i = 0; i < ProductData.length; i++) {
       var rawProductObject = ProductData[i];
       var chgProductCtrs = AllProductsCont.all[i];
+      
       chgProductCtrs.seenCounter = rawProductObject.seenCounter;
       chgProductCtrs.clickCounter = rawProductObject.clickCounter;
     }
@@ -310,10 +311,7 @@ function getProducts() {
   //console.log('local Storage Data', ProductData);
 } //// Ending Of get Products Function 
 
-
-
 renderNewProducts();
 getProducts();
-
 updateTotals();
 

@@ -1,8 +1,5 @@
 
 body {
-
-    /* background-color: paleturquoise;
-    color: rgb(230, 14, 140); */
     font-family: Georgia;
 }
 
@@ -14,6 +11,7 @@ header {
     color: navy;
     border-radius: 10px;
 }
+
 #products-container {
 
   color: rgb(29, 2, 29);
