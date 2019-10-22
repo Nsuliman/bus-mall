@@ -108,7 +108,7 @@ function renderNewProducts() {
 
 function getRandomProduct() {
   var index = Math.floor(Math.random() * AllProductsCont.all.length);
-  console.log('index', index);
+  //console.log('index', index);
   return AllProductsCont.all[index];
 }  // Ending random product function 
 
@@ -116,14 +116,17 @@ function getRandomProduct() {
 
 function updateTotals() {
 
-  var alloutput = document.getElementById('productsTable');
+  var alloutput = document.getElementById('product-sentences');
+
+  ///// change the id name 
+
 
   alloutput.innerHTML = '';
 
   for (var i = 0; i < AllProductsCont.all.length; i++) {
     var newProduct = AllProductsCont.all[i];
-    var output = addElement('output', alloutput);
-    addElement('p', output, newProduct.name + ' had ' + newProduct.clickCounter + ' votes and was shown ' + newProduct.seenCounter + ' times');
+   // var output = addElement('output', alloutput);
+    addElement('li', alloutput, newProduct.name + ' had ' + newProduct.clickCounter + ' votes and was shown ' + newProduct.seenCounter + ' times');
   }
 } // Ending Total Updates product function 
 
@@ -170,19 +173,17 @@ function clickHandler(event) {
       fullChart();
 
       AllProductsCont.container.removeEventListener('click', clickHandler);
+      updateProducts();             /// Store the date in Local storage 
 
     } else {
-
+     
+      
       renderNewProducts();
-    } // Ending last else to render the new product 
+        } // Ending last else to render the new product 
   } // Ending if statement condition if clicked 
 } // Ending Click Handler function 
 
 AllProductsCont.container.addEventListener('click', clickHandler);
-
-updateTotals();
-
-renderNewProducts();
 
 ////////////////////////// Canvas Chart  ////////////////////////////////
 
@@ -199,7 +200,7 @@ function makeProductname() {
   for (var i = 0; i < AllProductsCont.all.length; i++) {         // Store the products name in array to use it in the chart 
     var productName = AllProductsCont.all[i].name;
     productsNames.push(productName);
-    console.log('productsnames', productsNames);
+    //console.log('productsnames', productsNames);
   }
 
   return productsNames;
@@ -212,7 +213,7 @@ function makeProductseen() {
     var productSeen = AllProductsCont.all[i];
     //console.log('productClick',productClick);
     productsSeen.push(productSeen.seenCounter);
-    console.log('productsSeen', productsSeen);
+    //console.log('productsSeen', productsSeen);
   }
 
   return productsSeen;
@@ -225,7 +226,7 @@ function makeProductclick() {
   for (var i = 0; i < AllProductsCont.all.length; i++) {
     var productClick = AllProductsCont.all[i];
     productsClicks.push(productClick.clickCounter);
-    console.log('productsClicks', productsClicks);
+    //console.log('productsClicks', productsClicks);
   }
 
   return productsClicks;
@@ -236,7 +237,7 @@ function makeProductclick() {
 function fullChart()
 {
 
-  console.log('Chart : ', Chart);
+  //console.log('Chart : ', Chart);
   var chart = new Chart(ctx, {
     type: 'bar',
   
@@ -262,4 +263,57 @@ function fullChart()
     options: {}
   });
 
-}
+}  /// ending of Fullchart Function 
+
+
+
+//////////////////////////////// Local Storage ////////////////////////////////////////////////
+var localStrg = document.getElementById('productsTable');
+
+
+function updateProducts() {
+  //console.log(' products length ' , AllProductsCont.all.length  );
+  var productStr = JSON.stringify(AllProductsCont.all);
+  //console.log('productStr', productStr);
+  localStorage.setItem('Products', productStr);
+} // Ending Of Updates Products Function 
+
+
+function getProducts() {
+  var dataP = localStorage.getItem('Products');
+  //console.log(' dataP' , dataP);
+
+  var ProductData = JSON.parse(dataP);
+
+  //console.log('Product data' , ProductData);
+
+
+  if (ProductData) {
+    //console.log('ProductData.length' , ProductData.length );
+    //console.log(' products length  2 ' , AllProductsCont.all.length  );
+
+    for (let i = 0; i < ProductData.length; i++) {
+      var rawProductObject = ProductData[i];
+      var chgProductCtrs = AllProductsCont.all[i];
+      chgProductCtrs.seenCounter = rawProductObject.seenCounter;
+      chgProductCtrs.clickCounter = rawProductObject.clickCounter;
+    }
+    //console.log(' products length  2 ' , AllProductsCont.all.length  );
+
+    renderNewProducts();
+  }else {
+    
+    alert(' nothing here ');
+    // new AllProductsCont('bag', 'img/bag.jpg');
+
+  }
+  //console.log('local Storage Data', ProductData);
+} //// Ending Of get Products Function 
+
+
+
+renderNewProducts();
+getProducts();
+
+updateTotals();
+
