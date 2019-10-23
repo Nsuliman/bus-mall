@@ -311,5 +311,5 @@ function getProducts() {
 
 renderNewProducts();
 getProducts();
-updateTotals();
+// updateTotals();
 
