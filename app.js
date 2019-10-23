@@ -104,8 +104,6 @@ function renderNewProducts() {
 
 
 
-
-
 function getRandomProduct() {
   var index = Math.floor(Math.random() * AllProductsCont.all.length);
   //console.log('index', index);
@@ -165,11 +163,11 @@ function clickHandler(event) {
     productChlicked.clickCounter++;
     AllProductsCont.initialCounter++;
 
-    updateTotals();
 
     if (AllProductsCont.initialCounter === AllProductsCont.maxLimit) {
 
       alert('Your Trails Over ');
+      updateTotals();
       fullChart();
 
       AllProductsCont.container.removeEventListener('click', clickHandler);
