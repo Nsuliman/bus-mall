@@ -162,11 +162,12 @@ function clickHandler(event) {
     productChlicked.clickCounter++;
     AllProductsCont.initialCounter++;
 
-    updateTotals();
+    
 
     if (AllProductsCont.initialCounter === AllProductsCont.maxLimit) {
 
       alert('Your Trails Over ');
+      updateTotals();
       fullChart();
 
       AllProductsCont.container.removeEventListener('click', clickHandler);
@@ -180,7 +181,6 @@ function clickHandler(event) {
 
 AllProductsCont.container.addEventListener('click', clickHandler);
 
-updateTotals();
 
 renderNewProducts();
 
