@@ -1,5 +1,7 @@
 'use strict';
 
+////////////////////////// Bus-Mall clicking   ////////////////////////////////
+
 
 function AllProductsCont(name, src) {
   this.name = name;
@@ -116,14 +118,10 @@ function updateTotals() {
 
   var alloutput = document.getElementById('product-sentences');
 
-  ///// change the id name 
-
-
   alloutput.innerHTML = '';
 
   for (var i = 0; i < AllProductsCont.all.length; i++) {
     var newProduct = AllProductsCont.all[i];
-   // var output = addElement('output', alloutput);
     addElement('li', alloutput, newProduct.name + ' had ' + newProduct.clickCounter + ' votes and was shown ' + newProduct.seenCounter + ' times');
   }
 } // Ending Total Updates product function 
@@ -254,9 +252,7 @@ function fullChart()
           borderColor: ' rgb(125, 63, 170)',
           data: makeProductseen(), 
           type: 'line'
-        }            ]
-        
-        
+        }            ]  
     },
     options: {}
   });
@@ -303,8 +299,6 @@ function getProducts() {
   }else {
     
     alert(' nothing here ');
-    // new AllProductsCont('bag', 'img/bag.jpg');
-
   }
   //console.log('local Storage Data', ProductData);
 } //// Ending Of get Products Function 
