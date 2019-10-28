@@ -255,7 +255,7 @@ function fullChart()
           borderColor: ' rgb(125, 63, 170)',
           data: makeProductseen(), 
           type: 'line'
-        }            ]
+        }]
         
         
     },
